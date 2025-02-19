@@ -1,0 +1,219 @@
+lexical analysis:
+
+1. describe the role of lexical analysis in the design of a compiler.
+2. is it possible to design a compiler without a distinct lexical analysis phase?
+3. what is regular expression? give formal definition.
+4. Distinguish between nfa and dfa. Compare their power as token recognizer.
+5. Write regular expression for the following: 
+	a. identifiers of c language
+	b. binary strings such as a '0' is always followed by a '1'.
+	c. to check an ip address for correct syntax, that is four groups of 1-3 digits separated by periods.
+	d. to check correct syntax for the email address
+6. What does the following reg ex mean:
+	a. a(ab)*a
+	b. [0-7][0-7]*
+	c. (0|1)*0(0|1)(0|1)(0|1)
+	d. (a|b)*abb
+	e. (a|b)*a(a|b)(a|b)(a|b)
+7. Write a LEX specification file to identify the tokens of the language C
+8. Write a LEX program that accepts the English language words (without bother for meaning the course!) and replaces each occurrence of the string "abc" in it to "ABC".
+9. Explain why is it not possible to design a lexical analysis tool that can detect strings having equal number of two characters, say a and b.
+10. what is ambiguous grammar
+11. Define token, lexeme, and pattern in lexical analysis with examples.
+12. How does a lexical analyzer handle errors? Give examples of common lexical errors.
+13. What is the role of the symbol table in lexical analysis?
+14. What are tools like Lex (or Flex)? How are they useful in compiler design?
+15. What is lookahead in lexical analysis, and why is it important?
+16. Describe how DFA is used to recognize lexemes in a lexical analyzer.
+
+
+
+Syntax analysis:
+
+1. Construct Operator precedence parser for the following:
+	S -> (L) | a
+	L -> L,S | S
+show the parsing of the string "(a,((a,a),(a,a)))" using the parser constructed.
+
+2. Consider the grammar 
+	E -> E.i(E) | (E) | E?E : | i,
+where {E} is the set of nonterminal symbols , E is the start symbol and 
+	{. ? : ( ) } U { i | i is an identifier}
+is the set of terminal symbols. Give a corresponding LL(1) grammar which generates the same language as the one above. Sow the First and Follow sets for each nonterminal symbol and the predictive parsing table. Argue that the grammar is LL(1).
+
+3. Consider the grammar
+
+A -> BCx | y
+B - yA |  €
+C - Ay|x,
+
+where {A, B,C} is the set of nonterminal symbols, A is the start symbol, {x, y} is the
+set of terminal symbols. The grammar is not LL(1). Why? As part of your answer,
+show the First and Follow sets for each nonterminal symbol.
+
+4. Consider the grammar
+E ->BA
+A ->&B A | €
+B ->true | false
+where {E, A, B} is the set of nonterminal symbols, E is the start symbol and {&, true, false}
+is the set of terminal symbols. Show that the grammar is LL(1). In the process, construct
+the predictive parsing table.
+
+5. Consider the following grammar for regular expressions.
+R->R'|' R | RR | R* |(R)|a|b
+Modify the grammar to make it LL(1). Generate the predictive parsing table for the
+resulting grammar.
+
+6. Consider the grammar
+
+S ->AS|b
+A ->SA|a
+
+(a) Show that the grammar is ambiguous.
+(b) Construct the corresponding SLR parsing table.
+(c) Construct the corresponding LR(1) parsing table.
+(d) Construct the corresponding LALR parsing table.
+
+7. Consider the grammar
+
+E ->E +T|T
+T ->TF|F
+F ->F* | a | b
+
+(a) Construct the SLR parsing table.
+(b) Construct the corresponding LALR parsing table.
+
+8. Consider the grammar
+
+S ->AaAb | BbBa
+A ->€
+B -> €
+, show that it is LL(1), not SLR.
+
+9. Consider the grammar
+S ->Aa | bAc | dc | bda
+A->d
+
+Show that the grammar is LALR(1) but not SLR.
+
+10. Show that the following grammar is LR(1) but not LALR(1).
+S ->Aa | bAc | Bc | bBa
+A->d
+B->d
+
+11. Extend the parsing table for Boolean expression grammar to show error handling.
+
+12. Discuss the role of parser in compiler design.
+
+13. Arrange as per processing power: SLR, LR(1), LALR. Also, arrange them as per the
+number of states.
+
+14. Write YACC specification files for each of the grammars to identify (a) Boolean expres-
+sions and (b) regular expressions.
+
+15.Write syntax directed translation scheme for the regular expression grammar to generate
+the NFA corresponding to a regular expression.
+
+16. Write syntax directed translation scheme to evaluate arithmetic expressions.
+17. Compare and contrast top-down and bottom-up parsing techniques.
+18. Explain recursive descent parsing with an example grammar. What are the limitations of recursive descent parsers?
+19. Why is left recursion problematic for LL(1) parsers? How do you eliminate left recursion from a grammar?
+20. What is left factoring in grammar transformation? Explain with an example.
+21. Describe different error recovery strategies used in syntax analysis (panic mode, phrase level, etc.).
+22. What is a shift-reduce conflict in LR parsing? Give an example and explain how it can be resolved.
+23. Explain the concept of augmented grammar and canonical collection of LR(0) items.
+24. Demonstrate how to construct an LR(0) parsing table for a simple grammar.
+25. What are ambiguous grammars? How can ambiguity be removed?
+26. Compare LL(1), SLR(1), LALR(1), and LR(1) parsers in terms of their complexity, power, and applications.
+27. Define SDD and discuss the difference between synthesized and inherited attributes.
+28. What is an abstract syntax tree (AST)? How is it different from a parse tree?
+29. Discuss the role of parser generator tools like YACC, Bison, and ANTLR in compiler design.
+30. Explain how a symbol table is updated and used during syntax analysis.
+31. Write a recursive descent parser for a simple grammar (like arithmetic expressions).
+32. For a given grammar, show how to build the parsing table.
+33. Explain FIRST and FOLLOW sets in detail.
+34. Recursive vs Non-Recursive Predictive Parsing.
+35. Explain how to construct an operator precedence table.
+36. Parse a given arithmetic expression using operator precedence parsing.
+37. Construct LR(0) and LR(1) parsing tables for a given grammar.
+
+
+
+
+
+Intermediate code generation:
+
+
+ 1. What is the role of intermediate code generation in overall compiler design?
+ 2. Show the annotated parse tree and code generation process for the following arithmetic expressions.
+(a) a+(b-c) * d
+(b) -(a+b)*(c+d) +(a*b+ c)
+
+3. Show the annotated parse tree and code generation process for the following boolean expressions,
+(a) a and ( b or c and not d )
+(b) not (not (c and d) or a)
+
+4. Show the annotated parse tree and code generation process for the following expression involving arrays,
+A[i, j] = B[C[i, j]] + C[i,j] + D[i * j]
+
+5. 
+Consider the following code fragment:
+
+while a>b do
+begin
+	if x=y then c=a+b
+	else d=a-b
+	p=q+r
+end
+x=y+z
+
+Show the annotated parse tree and the code generation process.
+
+6 Write semantic actions for the following:
+
+(a) for-loop
+(b) repeat-until loop
+7 Justify or contradict the statement, "backpatching is essential for constructs with forward
+branch targets".
+-------------------
+-----------------
+8 Modify the semantic actions for array references to introduce bounds check dynamically.
+9 Write the semantic actions to generate the three-address code for case statement of any
+language you are familiar with.
+10 Write the semantic actions to generate the three-address code for function call and return
+statements of any language you are familiar with.
+11. What are the different types of intermediate representations (IR) used in compilers? Explain with examples (e.g., three-address code, quadruples, triples, and abstract syntax trees).
+12. Explain how three-address code is generated for arithmetic expressions.
+13. Compare quadruples and triples as intermediate representations. What are their advantages and disadvantages?
+14. Explain short-circuit evaluation for Boolean expressions in intermediate code generation.
+15. What is backpatching? Explain its role in code generation with an example.
+16. How is intermediate code generated for control flow constructs like if-else, while, and for loops?17. How is intermediate code generated for multi-dimensional array accesses? Explain with an example.
+17. How is intermediate code generated for function calls, parameter passing, and return values?
+18. How are labels and jump instructions generated in intermediate code for control flow statements?
+19. How is intermediate code generated for switch-case constructs?
+20. How is error handling and exception handling represented in intermediate code?
+
+
+SDD:
+1. 1What is a Syntax Directed Definition (SDD)?
+Explain the application of SDD in compiler design.
+
+2. What are synthesized attributes? Give an example.
+What are inherited attributes? Give an example.
+Distinguish between synthesized and inherited attributes.
+
+3. What is an annotated parse tree? How is it constructed?
+Draw and explain the annotated parse tree for the arithmetic expression a = b + c * d
+
+4. What is a dependency graph in SDD? How is it used?
+Draw the dependency graph for a given expression involving synthesized and inherited attributes.
+
+5. What is an S-Attributed SDD? Explain with an example.
+What is an L-Attributed SDD? Explain with an example.
+Compare S-Attributed and L-Attributed SDDs.
+
+6. List and explain some applications of SDD in compiler design (e.g., type checking, intermediate code generation).
+
+7. Give an example of an S-Attributed definition to evaluate arithmetic expressions.
+8. Explain how an L-Attributed definition is used for type checking in declarations.
+
